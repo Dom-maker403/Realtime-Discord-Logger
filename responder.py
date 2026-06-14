@@ -17,15 +17,13 @@ KB_PATH = os.path.join(BASE_DIR, "knowledge_base.md")
 
 def run_auto_responder():
     try:
-        # Open inbox.json and read all the message into memory
-        # If the data isn't a list (empty or corrupted file), stop here
+        # STEP A: THE READER
         with open(INBOX_PATH, 'r') as f:
             inbox_list = json.load(f)
 
         if not isinstance(inbox_list, list):
             return  
-# Load the business rules and knowledge base into memory
-# So Claude has context when analyzing each message
+
         with open(RULES_PATH, 'r') as f:
             business_rules = f.read()
 
@@ -38,16 +36,15 @@ def run_auto_responder():
         for ticket in inbox_list:
             if ticket.get('status') == 'unread':
                 print(f"--- 🆕 Processing New Message from: {ticket['customer_name']} ---")
-                # Build the full system prompt by combining business rules + knowledge base
-                # This tells Claude how to behave and what format to return
-                # Think of it like a job description you hand to a new employee before they start making calls
+                
+                # Combine instructions flawlessly
                 full_system_prompt = (
                     f"{business_rules}\n\n"
                     f"COMPANY KNOWLEDGE BASE:\n{knowledge_base}\n\n"
-                    "Return ONLY JSON with keys: sentiment, priority, draft_reply."
+                    "Return ONLY valid JSON with keys: sentiment, priority, draft_reply. Do not include markdown code block backticks."
                 )
-                # Send the customer message to Claude along with the system prompt
-                # Claude analyzes it using the rules and knowledge base, keeps response under 1000 tokens
+
+                # Adjusted API Call Structure to ensure 100% system parameter compliance
                 response = client.messages.create(
                     model="claude-haiku-4-5-20251001",
                     max_tokens=1000,
@@ -57,27 +54,48 @@ def run_auto_responder():
                     ]
                 )
 
-                # STEP C: THE OUTPUT & CLEANING
+                              # STEP C: THE OUTPUT & SAFE CLEANING
                 raw_text = response.content[0].text
-                # Extract Claude's response and clean off any markdown formatting
-                clean_text = raw_text.strip().replace("```json", "").replace("```", "")
-                # Convert the text into a Python dictionary so we can read each field
-                ai_data = json.loads(clean_text)
+                clean_text = raw_text.strip()
+                
+                if clean_text.startswith("```"):
+                    clean_text = clean_text.replace("```json", "").replace("```", "").strip()
 
-                # Deep-cleaning catch to unpack nested strings if Claude double-serializes
+                try:
+                    ai_data = json.loads(clean_text)
+                    if isinstance(ai_data, str):
+                        ai_data = json.loads(ai_data)
+                except json.JSONDecodeError:
+                    print(f"❌ Failed to parse AI Response as JSON. Raw output was:\n{raw_text}")
+                    ai_data = {
+                        "sentiment": "UNKNOWN",
+                        "priority": "STANDARD",
+                        "draft_reply": "Thank you for your message. We are looking into this."
+                    }
+               # 1. Update all tracking keys in the data payload
+                ticket['status'] = 'pending_review'
+                ticket['sentiment'] = ai_data.get('sentiment', 'UNKNOWN')
+                ticket['priority'] = ai_data.get('priority', 'STANDARD')
+                ticket['draft_reply'] = ai_data.get('draft_reply', '')
                 
-                
-                if isinstance(ai_data, str):
-                    ai_data = json.loads(ai_data)
-                # Print the sentiment, priority and draft reply to the terminal
+                file_updated = True
+                print(f"🔬 Success: {ticket['customer_name']}'s ticket state set to pending_review.")
+
+                # 2. Commit the structural changes securely back to disk
+                if file_updated:
+                    with open(INBOX_PATH, 'w') as f:
+                        json.dump(inbox_list, f, indent=4)
+                    print("💾 inbox.json successfully updated on disk.")
+
+                # 3. Clean terminal reporting
                 print("\n[AI ANALYSIS]")
-                print(f"SENTIMENT: {ai_data.get('sentiment', 'N/A').upper()}")
-                print(f"PRIORITY:  {ai_data.get('priority', 'N/A').upper()}")
-                print(f"\n[DRAFT]\n{ai_data.get('draft_reply')}")
+                print(f"SENTIMENT: {ticket['sentiment']}")
+                print(f"PRIORITY: {ticket['priority']}")
+                print(f"\n[DRAFT]\n{ticket['draft_reply']}")
+
 
                 # Mark this specific message as read inside the array
-                ticket['status'] = 'read'
-                file_updated = True
+                
                 print(f"✅ Message from {ticket['customer_name']} processed and marked as READ.\n")
 
         # Save the updated array back to the file if any statuses changed
@@ -88,6 +106,8 @@ def run_auto_responder():
     except Exception as e:
         print(f"Error: {e}")
 
+
+
 if __name__ == "__main__":
     print("👀 Watcher Active... Listening for new data in inbox.json")
     while True:
@@ -97,4 +117,5 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             print("\nShutting down Watcher...")
             break
+
 

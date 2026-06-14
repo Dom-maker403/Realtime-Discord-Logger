@@ -1,0 +1,57 @@
+[
+    {
+        "ticket_id": "tk_6de8be47",
+        "customer_name": "extendohairline",
+        "customer_id": "518174034798706698",
+        "channel_id": "1511812282387009618",
+        "message": "Hello",
+        "sentiment": "neutral",
+        "draft_reply": "Error generating automated draft. Staff review required. (Details: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-sonnet-20241022'}, 'request_id': 'req_011CbvNUWebYwGpUEKsxjBbx'})",
+        "status": "waiting_human_click",
+        "review_msg_id": 1514396412421607464
+    },
+    {
+        "ticket_id": "tk_2c58652e",
+        "customer_name": "extendohairline",
+        "customer_id": "518174034798706698",
+        "channel_id": "1511812282387009618",
+        "message": "Hello",
+        "sentiment": "neutral",
+        "draft_reply": "Hello! Welcome to Domo's Tech Hub. Thank you for reaching out to us today.\n\nI'm here to help with any questions you may have about our custom computers, components, or services. Whether you're looking for product recommendations, need technical support, have concerns about an order, or just want to explore our offerings, I'm ready to assist.\n\nHow can I help you today?",
+        "status": "completed",
+        "review_msg_id": 1514396771470676029
+    },
+    {
+        "ticket_id": "tk_d7b125b2",
+        "customer_name": "extendohairline",
+        "customer_id": "518174034798706698",
+        "channel_id": "1511812282387009618",
+        "message": "my GPU is sparking and smoking, this is unacceptable!",
+        "sentiment": "URGENT",
+        "draft_reply": "Thank you for reporting this immediately\u2014a sparking and smoking GPU is a critical safety hazard that requires instant action.\n\n**IMMEDIATE STEPS:**\n1. **Power down your system completely** and unplug it from the wall outlet right now\n2. **Do not attempt to restart or troubleshoot** the system\n3. **Ensure proper ventilation** in the area and keep the system unplugged until we resolve this\n\n**What we'll do:**\n- Process an emergency replacement or full refund immediately upon your confirmation\n- Arrange expedited shipping at no cost to you\n- Document this for our quality assurance team\n\n**Next steps:**\nPlease reply with:\n- Your order number\n- Photos of the affected GPU (if safe to take without powering on)\n- Confirmation that the system is currently unplugged\n\nWe take component failures\u2014especially those involving fire risk\u2014with absolute seriousness. You'll have a resolution within 24 business hours. Your safety is our priority.\n\nDo you have your order information available?",
+        "status": "completed",
+        "review_msg_id": 1514718156630003773
+    },
+    {
+        "ticket_id": "tk_9455dd67",
+        "customer_name": "TestUser_003",
+        "customer_id": "1514722166627631134",
+        "channel_id": "1511812282387009618",
+        "message": "Hey, I ordered a gaming PC about 2 weeks ago and it finally arrived yesterday. I turned it on this morning and it won't display anything on my monitor - I'm getting power to the system (fans spinning, lights on) but just a black screen. I've tried different cables and a different monitor so I know it's not that. This is frustrating because I paid extra for the \"quality assurance\" check. Can someone help me troubleshoot this? I need to know if I have to send the whole thing back or if there's a quick fix.",
+        "sentiment": "URGENT",
+        "draft_reply": "Thank you for reaching out, and I sincerely apologize that your new gaming PC arrived with a display issue. I understand how frustrating this is, especially after paying for our quality assurance service\u2014that's exactly what we're here to prevent, and we'll make this right.\n\nSince you've already ruled out cables and monitors (great troubleshooting), let's systematically work through the most common causes before considering a return:\n\n**IMMEDIATE CHECKS:**\n\n1. **GPU Seating** \u2013 The discrete graphics card may not be fully seated in the PCIe slot. Power down completely, open the case, and firmly reseat the GPU until you hear the retention clip click. Ensure the PCIe power connectors (6-pin or 8-pin) are fully inserted into the card.\n\n2. **RAM Verification** \u2013 Reseat all memory modules. Power down, press the retention clips outward, remove each stick, and reinsert firmly until clips snap closed on both ends. Try booting after each stick individually to isolate a faulty module.\n\n3. **Monitor Input Source** \u2013 Confirm your monitor is set to the correct input (HDMI, DisplayPort, etc.) matching your cable connection. Some monitors default to the wrong input on first power-up.\n\n4. **BIOS/CMOS** \u2013 If the system has integrated graphics, try connecting your monitor directly to the motherboard's video output (not the GPU). If display appears there, the GPU may need driver installation or have a defect.\n\n5. **Power Supply Check** \u2013 Verify the 24-pin ATX motherboard power and 8-pin CPU power connectors are fully seated (should require firm pressure).\n\n**Next Steps:**\nPlease try these steps and report back with results. If none resolve the issue, we'll immediately process a replacement or full refund\u2014your satisfaction is guaranteed. You shouldn't need to troubleshoot a premium build.\n\nWhat's your system's GPU and motherboard model? That'll help me provide more targeted guidance.\n\nWe're here until this is fixed.",
+        "status": "completed",
+        "review_msg_id": 1515856321218609355
+    },
+    {
+        "ticket_id": "tk_33eeda41",
+        "customer_name": "TestUser_001",
+        "customer_id": "1514720846546075668",
+        "channel_id": "1511812282387009618",
+        "message": "Hi, I ordered a custom PC about 3 weeks ago and was told it would ship within 10 business days. I've checked my order status online and it still says \"in progress.\" I've already paid in full and no one has responded to my two previous emails. Can someone please give me an actual update on when this will be ready? I needed this for work and I'm getting pretty frustrated with the lack of communication here.",
+        "sentiment": "URGENT",
+        "draft_reply": "Thank you for reaching out, and I sincerely apologize for the frustration you're experiencing. A 3-week delay beyond the promised 10 business day window with no communication is absolutely unacceptable, especially when you've paid in full and need this system for work.\n\nI'm escalating your order immediately to our fulfillment team for priority investigation. Here's what I'm doing right now:\n\n**Immediate Actions:**\n1. Pulling your complete order details to identify any blockers (component availability, quality checks, or processing delays)\n2. Getting you a concrete ship date\u2014not an estimate, but a specific timeline\n3. Ensuring you receive direct contact information for a dedicated team member who will own your case\n\n**What I need from you:**\n- Your order number (I can look this up, but please confirm if you have it handy)\n- The best phone number to reach you\u2014I'll have someone call within 24 business hours with a full status update\n\nYour previous emails should never have gone unanswered. That's a service failure on our end, and I'm personally ensuring this doesn't happen again. You'll hear from us by end of business tomorrow with concrete answers.\n\nAgain, I apologize for the delay and poor communication. We'll make this right.\n\nBest regards,\nDomo's Tech Hub Customer Support",
+        "status": "completed",
+        "review_msg_id": 1515856325475565638
+    }
+]

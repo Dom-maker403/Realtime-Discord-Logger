@@ -1,0 +1,208 @@
+Web Scraper#0000: 🎯 **A Roblox cheat and one AI tool brought down Vercel's platform (webmatrices.com)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://webmatrices.com/post/how-a-roblox-cheat-and-one-ai-tool-brought-down-vercel-s-entire-platform">A Roblox cheat and one AI tool brought down Vercel's platform</a>
+
+🎯 **Show HN: Mediator.ai – Using Nash bargaining and LLMs to systematize fairness (mediator.ai)**
+📝 *AI Summary:* Daniel ran out of money six months in and took a delivery job to keep the lights on. He still bakes every morning at 5am, but for the last 18 months, Maya has run everything else.
+🔗 <a href="https://mediator.ai/">Show HN: Mediator.ai – Using Nash bargaining and LLMs to systematize fairness</a>
+Web Scraper#0000: 🎯 **Meta to start capturing employee mouse movements, keystrokes for AI training (reuters.com)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://www.reuters.com/sustainability/boards-policy-regulation/meta-start-capturing-employee-mouse-movements-keystrokes-ai-training-data-2026-04-21/">Meta to start capturing employee mouse movements, keystrokes for AI training</a>
+
+🎯 **Meta employees are up in arms over a mandatory program to train AI on their (businessinsider.com)**
+📝 *AI Summary:* Meta is installing new software on its US employees' computers that will track their keystrokes and mouse movements to train its AI, and it's sparking backlash within the company, according to internal communications obtained by Business Insider. Meta CTO Andrew Bosworth responded in the thread that "there is no option to opt out of this on your work provided laptop."
+🔗 <a href="https://www.businessinsider.com/meta-new-ai-tool-tracks-staff-activity-sparks-concern-2026-4">Meta employees are up in arms over a mandatory program to train AI on their</a>
+
+🎯 **CrabTrap: An LLM-as-a-judge HTTP proxy to secure agents in production (brex.com)**
+📝 *AI Summary:* Funds in Vault at program banks are eligible for FDIC insurance. Brex Treasury LLC does not provide legal, tax, or investment advice.
+🔗 <a href="https://www.brex.com/crabtrap">CrabTrap: An LLM-as-a-judge HTTP proxy to secure agents in production</a>
+Web Scraper#0000: 🎯 **Our newsroom AI policy (arstechnica.com)**
+📝 *AI Summary:* Earlier this year, we committed to publishing a reader-facing explanation of how Ars Technica uses, and doesn’t use, generative AI. Translating our internal policy into a reader-facing document that meets our standards for clarity and precision took longer than I’d have liked, but I wanted to get it right rather than get it out fast.
+🔗 <a href="https://arstechnica.com/staff/2026/04/our-newsroom-ai-policy/">Our newsroom AI policy</a>
+
+🎯 **Ping-pong robot beats top-level human players (reuters.com)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://www.reuters.com/sports/ping-pong-robot-ace-makes-history-by-beating-top-level-human-players-2026-04-22/">Ping-pong robot beats top-level human players</a>
+
+🎯 **Scoring Show HN submissions for AI design patterns (adriankrebs.ch)**
+📝 *AI Summary:* Then I asked some more designer friends what they think are common AI patterns. Inter used for everything, but especially the centered hero headlines LLM tend to use certain font combos like Space Grotesk, Instrument Serif and Geist Serif italic for one accent word in an otherwise-Inter hero
+🔗 <a href="https://www.adriankrebs.ch/blog/design-slop/">Scoring Show HN submissions for AI design patterns</a>
+Web Scraper#0000: 🎯 **S. Korea police arrest man over AI image of runaway wolf that misled authorities (bbc.com)**
+📝 *AI Summary:* This AI-generated photo prompted authorities to urgently relocate their search operation for Neukgu The AI-generated image of Neukgu had prompted Daejeon city government to issue an emergency text to residents, warning them of a wolf near the intersection.
+🔗 <a href="https://www.bbc.com/news/articles/c4gx1n0dl9no">S. Korea police arrest man over AI image of runaway wolf that misled authorities</a>
+
+🎯 **Show HN: How LLMs Work – Interactive visual guide based on Karpathy's lecture (ynarwal.github.io)**
+📝 *AI Summary:* A complete walkthrough of how large language models like ChatGPT are built — from raw internet text to a conversational assistant. Based on Andrej Karpathy's technical deep dive.
+🔗 <a href="https://ynarwal.github.io/how-llms-work/">Show HN: How LLMs Work – Interactive visual guide based on Karpathy's lecture</a>
+extendohairline: !Status touching up on Python Basics
+Web Scraper#0000: 🎯 **Show HN: A Karpathy-style LLM wiki your agents maintain (Markdown and Git) (github.com/nex-crm)**
+📝 *AI Summary:* CEO, PM, engineers, designer, CMO, CRO — all visible, arguing, claiming tasks, and shipping work instead of disappearing behind an API. tmux is required for--tui mode (the web UI runs agents headlessly by default; tmux-backed dispatch remains as an internal fallback).
+🔗 <a href="https://github.com/nex-crm/wuphf">Show HN: A Karpathy-style LLM wiki your agents maintain (Markdown and Git)</a>
+
+🎯 **Sabotaging projects by overthinking, scope creep, and structural diffing (kevinlynagh.com)**
+📝 *AI Summary:* When I have an idea for a project, it tends to go in one of these two directions: This might be rendered as a “unified” view, where changed lines are prefixed with+ or- to indicate whether they’re additions or deletions.
+🔗 <a href="https://kevinlynagh.com/newsletter/2026_04_overthinking/">Sabotaging projects by overthinking, scope creep, and structural diffing</a>
+
+🎯 **Open source memory layer so any AI agent can do what Claude.ai and ChatGPT do (alash3al.github.io)**
+📝 *AI Summary:* No summary available.
+🔗 <a href="https://alash3al.github.io/stash?_v01">Open source memory layer so any AI agent can do what Claude.ai and ChatGPT do</a>
+Web Scraper#0000: 🎯 **Terra API (YC W21) Hiring: Applied AI Strategist(Health Intelligence) (ycombinator.com)**
+📝 *AI Summary:* Apply to Terra API and hundreds of other fast-growing YC startups with a single profile. Your job is to keep Terra’s roadmap and GTM pointed at the sharpest opportunities across AI × health, using:
+🔗 <a href="https://www.ycombinator.com/companies/terra-api/jobs/DY7BCZU-applied-ai-strategist-market-intelligence-health">Terra API (YC W21) Hiring: Applied AI Strategist(Health Intelligence)</a>
+
+🎯 **Eden AI – European Alternative to OpenRouter (edenai.co)**
+📝 *AI Summary:* Access LLMs and expert AI models (OCR, Speech-to-Text, Text-to-Speech, Vision, Translation) through a single unified API. Route requests based on your own rules or enable Eden AI Smart Routing.
+🔗 <a href="https://www.edenai.co" rel="nofollow">Eden AI – European Alternative to OpenRouter</a>
+Web Scraper#0000: 🎯 **Fast16: High-precision software sabotage 5 years before Stuxnet (sentinelone.com)**
+📝 *AI Summary:* Even by itself, svcmgmt.exe already looks like an early high-end implant, a modular service binary that hands most of its logic to encrypted Lua bytecode. All spreading is done through standard Windows service-control and file-sharing APIs, an early example of propagation that leans on built-in administration features rather than custom network protocols.
+🔗 <a href="https://www.sentinelone.com/labs/fast16-mystery-shadowbrokers-reference-reveals-high-precision-software-sabotage-5-years-before-stuxnet/">Fast16: High-precision software sabotage 5 years before Stuxnet</a>
+
+🎯 **An AI agent deleted our production database. The agent's confession is below (twitter.com/lifeof_jer)**
+📝 *AI Summary:* Something went wrong, but don’t fret — let’s give it another shot. Firefox’s Enhanced Tracking Protection (Strict Mode) is known to cause issues on x.com
+🔗 <a href="https://twitter.com/lifeof_jer/status/2048103471019434248">An AI agent deleted our production database. The agent's confession is below</a>
+extendohairline: !status bridging the gap between project one and two
+extendohairline: !status bridging the gap between project one and two
+Web Scraper#0000: 🎯 **How OpenAI delivers low-latency voice AI at scale (openai.com)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://openai.com/index/delivering-low-latency-voice-ai-at-scale/">How OpenAI delivers low-latency voice AI at scale</a>
+
+🎯 **Train Your Own LLM from Scratch (github.com/angelos-p)**
+📝 *AI Summary:* Andrej Karpathy's nanoGPT was my first real exposure to LLMs and transformers. Seeing how a working language model could be built in a few hundred lines of PyTorch completely changed how I thought about AI and inspired me to go deeper into the space.
+🔗 <a href="https://github.com/angelos-p/llm-from-scratch">Train Your Own LLM from Scratch</a>
+
+🎯 **Google Chrome silently installs a 4 GB AI model on your device without consent (thatprivacyguy.com)**
+📝 *AI Summary:* Two weeks ago I wrote about Anthropic silently registering a Native Messaging bridge in seven Chromium-based browsers on every machine where Claude Desktop was installed [1]. Chrome uses it to power features Google has marketed under names like "Help me write", on-device scam detection, and other AI-assisted browser functions.
+🔗 <a href="https://www.thatprivacyguy.com/blog/chrome-silent-nano-install/">Google Chrome silently installs a 4 GB AI model on your device without consent</a>
+Web Scraper#0000: 🎯 **CARA 2.0 – “I Built a Better Robot Dog” (aaedmusa.com)**
+📝 *AI Summary:* This firmware did provide encoder and current feedback, but it wasn’t able to maintain stable communication with the motors. So, I decided to do some digging online to see if anyone else had experienced this issue, and I came across Mohammad Marshid, who created a custom version of the XDrive’s 0.5.1 firmware that could send encoder feedback ( Mohammad’s firmware).
+🔗 <a href="https://www.aaedmusa.com/projects/cara2">CARA 2.0 – “I Built a Better Robot Dog”</a>
+
+🎯 **Telus Uses AI to Alter Call-Agent Accents (letsdatascience.com)**
+📝 *AI Summary:* According to reporting by iPhone in Canada and The Globe and Mail, Telus is running call-centre audio through a live speech-to-speech system via its Telus Digital unit to alter agents' accents in real time. iPhone in Canada reports the software is supplied by Tomato.ai and that the system is applied to offshore agents' voices to address what Telus reportedly describes as "accent-related friction."
+🔗 <a href="https://letsdatascience.com/news/telus-uses-ai-to-alter-call-agent-accents-a3868f63">Telus Uses AI to Alter Call-Agent Accents</a>
+
+🎯 **Three Inverse Laws of AI (susam.net)**
+📝 *AI Summary:* These services have turned out to be quite useful, especially for
+exploring unfamiliar topics and as a general productivity aid. A non-exhaustive set of principles can still be useful if
+it helps us think more clearly about the risks involved.
+🔗 <a href="https://susam.net/inverse-laws-of-robotics.html">Three Inverse Laws of AI</a>
+Web Scraper#0000: 🎯 **Making LLM Training Faster with Unsloth and NVIDIA (unsloth.ai)**
+📝 *AI Summary:* NVIDIA GPUs are purpose-built for these workloads: they break complex problems into pieces and process them in parallel. When optimizing model training, developers often start with the usual high-impact kernels: matmuls, attention, fused ops, grouped GEMM, and so on.
+🔗 <a href="https://unsloth.ai/blog/nvidia-collab">Making LLM Training Faster with Unsloth and NVIDIA</a>
+Web Scraper#0000: 🎯 **Two Home Affairs officials suspended after AI 'hallucinations' found (citizen.co.za)**
+📝 *AI Summary:* As with DHA, ficticious sources and citations were found to be present in the draft National AI Policy. “The most plausible explanation is that AI-generated citations were included without proper verification.
+🔗 <a href="https://www.citizen.co.za/news/home-affairs-officials-suspended-ai-hallucinations/">Two Home Affairs officials suspended after AI 'hallucinations' found</a>
+extendohairline: !Status Annotated Responder.py and Fowarder.py
+extendohairline: !Status Annotated Responder.py and Fowarder.py
+Web Scraper#0000: 🎯 **Can LLMs model real-world systems in TLA+? (sigops.org)**
+📝 *AI Summary:* When we run today’s leading LLMs on SysMoBench — Claude, GPT, Gemini, DeepSeek, Kimi, Qwen, etc — a recurring pattern emerges. The “accumulate all votes as evidence” pattern appears in many formal-methods textbooks, but it does not match ZooKeeper’s semantics.
+🔗 <a href="https://www.sigops.org/2026/can-llms-model-real-world-systems-in-tla/">Can LLMs model real-world systems in TLA+?</a>
+
+🎯 **All my clients wanted a carousel, now it's an AI chatbot (pages.casa)**
+📝 *AI Summary:* Every homepage had to have one, big, slow, full of stock photos that nobody asked for. Visitors ignored them completely, scrolled past in half a second, and went looking for the phone number.
+🔗 <a href="https://adele.pages.casa/md/blog/all-my-clients-wanted-a-carousel-now-it-s-an-ai-chatbot.md">All my clients wanted a carousel, now it's an AI chatbot</a>
+Web Scraper#0000: 🎯 **LLMs corrupt your documents when you delegate (arxiv.org)**
+📝 *AI Summary:* View PDFHTML (experimental) Abstract:Large Language Models (LLMs) are poised to disrupt knowledge work, with the emergence of delegated work as a new interaction paradigm (e.g., vibe coding). We introduce DELEGATE-52 to study the readiness of AI systems in delegated workflows.
+🔗 <a href="https://arxiv.org/abs/2604.15597">LLMs corrupt your documents when you delegate</a>
+
+🎯 **Gen Z Resentment Toward AI Grows as Adoption Stagnates and Workplace Fears Mount (waltonfamilyfoundation.org)**
+📝 *AI Summary:* Anxiety remains high, with slightly more than 4 in 10 young people continuing to report feeling uneasy about the technology’s trajectory. This skepticism persists even as 56% of Gen Zers acknowledge that AI tools can help them complete their work faster.
+🔗 <a href="https://www.waltonfamilyfoundation.org/about-us/newsroom/gen-z-resentment-toward-ai-grows-as-adoption-stagnates-and-workplace-fears-mount">Gen Z Resentment Toward AI Grows as Adoption Stagnates and Workplace Fears Mount</a>
+Web Scraper#0000: 🎯 **Local AI needs to be the norm (unix.foo)**
+📝 *AI Summary:* The silicon in our pocket is mind bogglingly faster than what was available a decade ago. If the feature can be done locally, opting into this mess is self inflicted damage.
+🔗 <a href="https://unix.foo/posts/local-ai-needs-to-be-norm/">Local AI needs to be the norm</a>
+
+🎯 **An AI coding agent, used to write code, needs to reduce your maintenance costs (jamesshore.com)**
+📝 *AI Summary:* Every line of code you write has to be maintained: bug fixes, cleanup, dependency upgrades, and so forth. Added people when the team got slow... and then kept adding more, because it was never enough
+🔗 <a href="https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs">An AI coding agent, used to write code, needs to reduce your maintenance costs</a>
+
+🎯 **Maryland citizens hit with $2B power grid upgrade for out-of-state AI (tomshardware.com)**
+📝 *AI Summary:* The Maryland Office of People’s Counsel (OPC), a state agency that represents its utility consumers, filed a complaint before the Federal Energy Regulatory Commission (FERC) regarding PJM Interconnection, LLC’s plans to charge it $2 billion of the $22 billion it spent to upgrade its grid to accommodate increasing demand from data centers. Maryland customers have neither caused the need for these billions in new transmission projects nor will they meaningfully benefit from them.”
+🔗 <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/maryland-citizens-slapped-with-usd2-billion-grid-upgrade-bill-for-out-of-state-ai-data-centers-state-complains-to-federal-energy-regulators-says-additional-cost-breaks-ratepayer-protection-pledge-promises">Maryland citizens hit with $2B power grid upgrade for out-of-state AI</a>
+Web Scraper#0000: 🎯 **If AI writes your code, why use Python? (medium.com/nmitchem)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://medium.com/@NMitchem/if-ai-writes-your-code-why-use-python-bf8c4ba1a055">If AI writes your code, why use Python?</a>
+
+🎯 **Google says criminal hackers used AI to find a major software flaw (nytimes.com)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://www.nytimes.com/2026/05/11/us/politics/google-hackers-attack-ai.html">Google says criminal hackers used AI to find a major software flaw</a>
+
+🎯 **I let AI build a tool to help me figure out what was waking me up at night (martin.sh)**
+📝 *AI Summary:* When something keeps bothering me, I want to investigate, find a likely cause, and act on it. Other nights I don't fully wake up, but my watch the next morning shows that something pulled me out of deep sleep at 3:32 am.
+🔗 <a href="https://martin.sh/i-let-ai-build-a-tool-to-help-me-figure-out-what-was-waking-me-up-at-night/">I let AI build a tool to help me figure out what was waking me up at night</a>
+Web Scraper#0000: 🎯 **Reimagining the mouse pointer for the AI era (deepmind.google)**
+📝 *AI Summary:* The mouse pointer has been a constant companion on computer screens, across every website, document and workflow. Despite how technologies have changed, the pointer has barely evolved in more than half a century.
+🔗 <a href="https://deepmind.google/blog/ai-pointer/">Reimagining the mouse pointer for the AI era</a>
+Web Scraper#0000: 🎯 **Arena AI Model ELO History (mayerwin.github.io)**
+📝 *AI Summary:* These updates sometimes introduce "nerfs" such as aggressive censorship, excessive quantization (to save compute costs), or behavioral degradation. Consumer chat interfaces (like gemini.com or chatgpt.com) often add system prompts, safety filters, and UI-specific wrappers not present in the raw API.
+🔗 <a href="https://mayerwin.github.io/AI-Arena-History/">Arena AI Model ELO History</a>
+
+🎯 **The US is winning the AI race where it matters most: commercialization (avkcode.github.io)**
+📝 *AI Summary:* China has contenders, but the US is clearly ahead in
+revenue, adoption, tools, and reach. It helps
+China reduce dependence on Nvidia and push inference toward domestic stacks such as Huawei Ascend.
+🔗 <a href="https://avkcode.github.io/blog/us-winning-ai-race.html">The US is winning the AI race where it matters most: commercialization</a>
+
+🎯 **Reverting the incremental GC in Python 3.14 and 3.15 (python.org)**
+📝 *AI Summary:* No summary available.
+🔗 <a href="https://discuss.python.org/t/reverting-the-incremental-gc-in-python-3-14-and-3-15/107014">Reverting the incremental GC in Python 3.14 and 3.15</a>
+Web Scraper#0000: 🎯 **RelaxAI – UK sovereign LLM inference at 80% cheaper than OpenAI/Claude (relax.ai)**
+📝 *AI Summary:* Redirecting from/docs to/docs/getting-started/introduction
+🔗 <a href="https://relax.ai/docs" rel="nofollow">RelaxAI – UK sovereign LLM inference at 80% cheaper than OpenAI/Claude</a>
+
+🎯 **Access to frontier AI will soon be limited by economic and security constraints (antonleicht.me)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://writing.antonleicht.me/p/cut-off">Access to frontier AI will soon be limited by economic and security constraints</a>
+
+🎯 **LLM Policy for Rust Compiler (github.com/rust-lang)**
+📝 *AI Summary:* rustbot added
+the S-waiting-on-review Status: Awaiting review from the assignee but also interested parties. rustbot added T-bootstrap Team: Bootstrap T-compiler Team: Compiler T-libs Team: Library / libs T-rustdoc Team: rustdoc
+labels Apr 17, 2026
+🔗 <a href="https://github.com/rust-lang/rust-forge/pull/1040">LLM Policy for Rust Compiler</a>
+Web Scraper#0000: 🎯 **The last six months in LLMs in five minutes (simonwillison.net)**
+📝 *AI Summary:* # Six months is a pretty convenient time period to cover, because it captures what I’ve been calling the November 2025 inflection point. I think Gemini 3 drew the best pelican out of this lot, but pelicans aren’t everything.
+🔗 <a href="https://simonwillison.net/2026/May/19/5-minute-llms/">The last six months in LLMs in five minutes</a>
+
+🎯 **LLMCap – A proxy that hard-stops LLM API calls when you hit a dollar cap (llmcap.io)**
+📝 *AI Summary:* Your provider API key (e.g. sk-ant-...) is passed through the proxy header on each request and immediately discarded. LLMCap passes SSE chunks through in real time.
+🔗 <a href="https://www.llmcap.io/">LLMCap – A proxy that hard-stops LLM API calls when you hit a dollar cap</a>
+
+🎯 **Alignment pretraining: AI discourse creates self-fulfilling (mis)alignment (arxiv.org)**
+📝 *AI Summary:* View PDFHTML (experimental) Abstract:Pretraining corpora contain extensive discourse about AI systems, yet the causal influence of this discourse on downstream alignment remains poorly understood. If prevailing descriptions of AI behaviour are predominantly negative, LLMs may internalise corresponding behavioural priors, giving rise to self-fulfilling misalignment.
+🔗 <a href="https://arxiv.org/abs/2601.10160">Alignment pretraining: AI discourse creates self-fulfilling (mis)alignment</a>
+extendohairline: Hey just checking in on the bridge!
+Web Scraper#0000: 🎯 **Remove-AI-Watermarks – CLI and library for removing AI watermarks from images (github.com/wiltodelta)**
+📝 *AI Summary:* Strips SynthID, C2PA Content Credentials, EXIF/XMP "Made with AI" labels, and visible sparkle overlays — all in one command. Google Gemini (internally codenamed Nano Banana) adds a visible sparkle logo to generated images using alpha blending:
+🔗 <a href="https://github.com/wiltodelta/remove-ai-watermarks">Remove-AI-Watermarks – CLI and library for removing AI watermarks from images</a>
+
+🎯 **OpenAI Adopts Google's SynthID Watermark for AI Images with Verification Tool (openai.com)**
+📝 *AI Summary:* Click link to read full article.
+🔗 <a href="https://openai.com/index/advancing-content-provenance/">OpenAI Adopts Google's SynthID Watermark for AI Images with Verification Tool</a>
+
+🎯 **Mistral AI acquires Emmi AI (emmi.ai)**
+📝 *AI Summary:* The acquisition marks a major step in Europe’s industrial AI ambitions. It empowers our customers with a fully integrated platform to solve complex challenges, transform core R&D processes, and accelerate high-value innovation”, said Arthur Mensch, co-founder and CEO, Mistral AI.
+🔗 <a href="https://www.emmi.ai/news/mistral-ai-acquires-emmi-ai">Mistral AI acquires Emmi AI</a>
+Web Scraper#0000: 🎯 **Typewise (YC S22) Is Hiring an AI Growth Engineer (Zurich or Remote) (ycombinator.com)**
+📝 *AI Summary:* Here’s the challenge: when a CS leader sits down today and types “best AI customer service platform” into Google, they find Fin/Intercom. You’ll report directly to David (CEO, ex-Booz Allen strategy) and work alongside Janis (CTO, deep tech NLP).
+🔗 <a href="https://www.ycombinator.com/companies/typewise/jobs/HmCzfBK-ai-growth-engineer">Typewise (YC S22) Is Hiring an AI Growth Engineer (Zurich or Remote)</a>
+
+🎯 **Recreate famous water profiles using supermarket bottled water (waterdictionary.net)**
+📝 *AI Summary:* Some links are affiliate links — we may earn a small commission at no extra cost to you.
+🔗 <a href="https://www.waterdictionary.net">Recreate famous water profiles using supermarket bottled water</a>
+
+🎯 **Google’s AI is being manipulated. The search giant is quietly fighting back (bbc.com)**
+📝 *AI Summary:* I heard there was an easy way to poison AI chatbots and make them spread lies on your behalf. According to Ray and other search engine experts, AI tools often throw up information from a single web page or social media post.
+🔗 <a href="https://www.bbc.com/future/article/20260519-google-tackles-attempts-to-hack-its-ai-results">Google’s AI is being manipulated. The search giant is quietly fighting back</a>
+extendohairline: Hey, how much do you guys charge to put together a custom PC if I bring my own parts?
+extendohairline: Hey, how long does the process typically take?
+extendohairline: Your team completely messed up my custom PC build! It won't even turn on and I want my money back right now or I'm calling my lawyer!
+extendohairline: THIS IS UNACCEPTABLE
+extendohairline: I expected better from a well acclaimed establishment!!!!
+extendohairline: HELLO!!!
+extendohairline: Your team completely messed up my custom PC build! It won't even turn on and I want my money back right now or I'm calling my lawyer!
+
+THIS IS UNACCEPTABLE
+
+I expected better from a well acclaimed establishment!!!!
+
+HELLO!!!

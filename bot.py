@@ -1,33 +1,29 @@
 import os
 import json
 import uuid
+import re
 import discord
 from discord.ext import tasks
 from dotenv import load_dotenv
+from anthropic import Anthropic  
 
-# Try importing your custom client fallback module if standard anthropic isn't used
-try:
-    import anthropic_client
-    anthropic_module = anthropic_client.anthropic
-except ImportError:
-    import anthropic
-    anthropic_module = anthropic
 
 # --- System & Environment Setup ---
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 REVIEW_CHANNEL_ID = int(os.getenv("REVIEW_CHANNEL_ID"))
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-
-# 🔥 NEW ENVIRONMENT VARIABLE: The public channel your customers use
-# Add CUSTOMER_CHANNEL_ID=your_id to your .env file
 CUSTOMER_CHANNEL_ID = int(os.getenv("CUSTOMER_CHANNEL_ID"))
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+STAFF_PING_ID = os.getenv("STAFF_PING_ID", "")
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INBOX_PATH = os.path.join(BASE_DIR, "inbox.json")
 
-# Initialize Direct Anthropic Client using your working syntax architecture
-anthropic_client_instance = anthropic_module.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+# ✅ Production standard initialization
+anthropic_client_instance = Anthropic(api_key=ANTHROPIC_API_KEY)
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -35,108 +31,155 @@ intents.reactions = True
 client = discord.Client(intents=intents)
 
 
+
+
 # ==========================================
 #     🤖 HELPER: LLM DRAFT GENERATION
 # ==========================================
-
-#Sends the customer's message to Claude, analyzes the sentiment and returns a drafted reply based on the tone and content of the message
-def generate_ai_draft(customer_message):
-    """Calls Claude to analyze sentiment and draft a tailored response."""
-    print("🧠 Calling working Anthropic API endpoint to analyze and generate draft response...")
-    
+def generate_ai_draft(customer_message, staff_feedback=None):
+    """Calls Claude to analyze sentiment and draft tailored responses."""
+    print("🧠 Calling Anthropic API endpoint to analyze and generate premium draft response...")
+   
     system_prompt = (
-        "You are an elite, helpful retail customer support agent. "
-        "Analyze the customer query. Be polite, clear, and concise. "
-        "Provide your answer wrapped inside an XML tag format like this:\n"
-        "<sentiment>positive/neutral/negative</sentiment>\n"
-        "<draft>Your support reply draft goes here</draft>"
+        "You are an elite, expert retail customer support engineer for Domo's Tech Hub, a premier custom computer and component storefront. "
+        "Analyze the customer query thoroughly.\n\n"
+        "CRITICAL SENTIMENT CRITERIA:\n"
+        "- If the customer mentions broken components, smoke, sparks, shipping damage, missing high-value orders, or uses aggressive/deeply frustrated language, set the sentiment to exactly: URGENT\n"
+        "- Otherwise, classify as positive or neutral based on context.\n\n"
+        "DRAFTING RULES:\n"
+        "- Be professional, empathetic, and direct. Do not say 'As an AI...'\n"
+        "- Address hardware issues with technical precision (e.g., grounding, loose connections, cable seating).\n\n"
+        "Provide your final analysis wrapped inside this precise XML format:\n"
+        "<sentiment>positive/neutral/URGENT</sentiment>\n"
+        "<draft>Your premium, complete retail support response draft goes here</draft>"
     )
+
+
+    user_content = customer_message
+    if staff_feedback:
+        user_content = (
+            f"Original Customer Message: {customer_message}\n\n"
+            f"Staff feedback on previous draft: {staff_feedback}\n\n"
+            f"Please regenerate the draft response incorporating the staff feedback perfectly."
+        )
+
 
     try:
         response = anthropic_client_instance.messages.create(
-            model="claude-3-5-sonnet-20241022",
+            model="claude-haiku-4-5-20251001", # ✅ Production standard string
             max_tokens=1000,
             temperature=0.5,
             system=system_prompt,
-            messages=[{"role": "user", "content": customer_message}]
+            messages=[{"role": "user", "content": user_content}]
         )
         raw_text = response.content[0].text
+       
+        # Safe RegEx Extractors for XML Tags
+        sentiment_match = re.search(r"<sentiment>(.*?)</sentiment>", raw_text, re.DOTALL)
+        draft_match = re.search(r"<draft>(.*?)</draft>", raw_text, re.DOTALL)
         
-        sentiment = "neutral"
-        if "<sentiment>" in raw_text:
-            sentiment = raw_text.split("<sentiment>")[1].split("</sentiment>")[0].strip()
-            
-        draft = "Thank you for reaching out! A team member will be with you shortly."
-        if "<draft>" in raw_text:
-            draft = raw_text.split("<draft>")[1].split("</draft>")[0].strip()
-            
+        sentiment = sentiment_match.group(1).strip() if sentiment_match else "neutral"
+        draft = draft_match.group(1).strip() if draft_match else raw_text
+           
         return sentiment, draft
     except Exception as e:
-        
-        return "neutral", "Thank you for your message. We are reviewing your request."
+        print(f"❌ Claude API Call failed: {e}")
+        return "neutral", f"Error generating automated draft. Staff review required. (Details: {e})"
+
+
 
 
 # ==========================================
-#    ⚡ LIVE EVENT: PUBLIC TICKET CATCHER
+#    ⚡ LIVE EVENT: PUBLIC & THREAD CATCHER
 # ==========================================
 @client.event
-
-# Listens for new customer messages in the designated channel, generates an AI draft immediately, and saves the ticket to inbox.json as pending_review, bypassing the background loop to prevent double processing
 async def on_message(message):
-    # 🛑 GOLDEN RULE: Never process messages sent by the bot itself!
     if message.author == client.user:
         return
 
-    # Only catch messages typed inside your designated customer help channel
+
+    # Handle Staff Feedback inside revision threads
+    if isinstance(message.channel, discord.Thread) and message.channel.parent_id == REVIEW_CHANNEL_ID:
+        try:
+            with open(INBOX_PATH, 'r') as f:
+                inbox_list = json.load(f)
+        except Exception:
+            return
+
+
+        file_updated = False
+        for ticket in inbox_list:
+            if ticket.get('status') == 'under_revision' and ticket.get('review_msg_id') == message.channel.id:
+                print(f"✍️ Staff feedback received for ticket {ticket['ticket_id']}: '{message.content}'")
+               
+                sentiment, dynamic_draft = generate_ai_draft(ticket['message'], staff_feedback=message.content)
+               
+                ticket['sentiment'] = sentiment
+                ticket['draft_reply'] = dynamic_draft
+                ticket['status'] = 'pending_review' 
+                ticket['review_msg_id'] = None      
+                file_updated = True
+               
+                try:
+                    await message.channel.delete()
+                    print(f"🧹 Closed revision thread for ticket {ticket['ticket_id']}.")
+                except Exception as thread_err:
+                    print(f"⚠️ Could not delete thread: {thread_err}")
+                break
+
+
+        if file_updated:
+            with open(INBOX_PATH, 'w') as f:
+                json.dump(inbox_list, f, indent=4)
+        return
+
+
+    # Catch inbound customer messages in public chat
     if message.channel.id != CUSTOMER_CHANNEL_ID:
         return
 
-    print(f"📩 Live ticket captured from {message.author.name}! Generating draft immediately...")
 
-    # 1. Read current array contents safely
+    print(f"📩 Live ticket captured from {message.author.name}! Initializing in queue...")
+
+
     try:
         with open(INBOX_PATH, 'r') as f:
             inbox_list = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         inbox_list = []
 
-    # 2. Generate the AI draft immediately right here to prevent loop racing
-    sentiment, draft_reply = generate_ai_draft(message.content)
 
-    # 3. Build the ticket object already processed and ready for Phase 2 dispatch
     new_ticket = {
         "ticket_id": f"tk_{str(uuid.uuid4())[:8]}",
         "customer_name": message.author.name,
         "customer_id": str(message.author.id),
         "channel_id": str(message.channel.id),
         "message": message.content,
-        "sentiment": sentiment,
-        "draft_reply": draft_reply,
-        "status": "pending_review",  # 🔥 Skips 'unread' phase so the background loop never double-processes it!
+        "sentiment": "neutral",
+        "draft_reply": "Generating draft...",
+        "status": "unread", 
         "review_msg_id": None
     }
 
-    # 4. Append to database file instantly
+
     inbox_list.append(new_ticket)
-    
+   
     try:
         with open(INBOX_PATH, 'w') as f:
             json.dump(inbox_list, f, indent=4)
-        print(f"💾 Ticket {new_ticket['ticket_id']} securely queued as pending_review.")
+        print(f"💾 Ticket {new_ticket['ticket_id']} safely queued as unread.")
     except Exception as e:
         print(f"❌ Failed to save live ticket to file: {e}")
+
 
 
 
 # ==========================================
 #     🔄 UNIFIED BACKGROUND QUEUE LOOP
 # ==========================================
-
-# Runs every 5 seconds, checks inbox.json for unread tickets to generate AI drafts and pending_review tickets to dispath staff embed cards on Discord, using PROCESSING lock to prevent double posting
 @tasks.loop(seconds=5)
 async def process_ticket_pipeline():
     """Loops through all tickets in the queue safely without double-posting."""
-    # 🔥 FIXED: Robust channel fetching so it never returns None and crashes
     review_channel = client.get_channel(REVIEW_CHANNEL_ID)
     if not review_channel:
         try:
@@ -144,81 +187,106 @@ async def process_ticket_pipeline():
         except Exception:
             return
 
+
     try:
         with open(INBOX_PATH, 'r') as f:
             inbox_list = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return
 
+
     file_updated = False
 
+
     for ticket in inbox_list:
-        # --- PHASE 1: GENERATE DRAFT FOR UNREAD TICKETS (Fallback safety) ---
         if ticket.get('status') == 'unread':
             customer_name = ticket.get('customer_name', 'Unknown Customer')
             print(f"📥 Processing unread message from {customer_name} ({ticket['ticket_id']})...")
-            
             sentiment, draft_reply = generate_ai_draft(ticket.get('message', 'No message content provided.'))
-            
             ticket['sentiment'] = sentiment
             ticket['draft_reply'] = draft_reply
             ticket['status'] = 'pending_review'
             file_updated = True
 
-        # --- PHASE 2: DISPATCH EMBED FOR TICKETS PENDING REVIEW ---
+
         if ticket.get('status') == 'pending_review' and not ticket.get('review_msg_id'):
-            # 🔥 THE LOCK: Instantly give it a placeholder ID so the next loop cycle ignores it while we wait on Discord
             ticket['review_msg_id'] = "PROCESSING"
             file_updated = True
-            
-            # Save immediately to lock it in the JSON file
+           
             with open(INBOX_PATH, 'w') as f:
                 json.dump(inbox_list, f, indent=4)
 
+
             print(f"📢 Generating staff review card for {ticket.get('customer_name')}...")
 
+
+            ticket_sentiment = ticket.get('sentiment', 'neutral').upper()
+           
+            if ticket_sentiment == "URGENT":
+                embed_title = "🔥 URGENT TICKET PRIORITY CRITICAL 🔥"
+                card_color = discord.Color.red()
+                alert_text = f"🚨 <@{STAFF_PING_ID}> **Emergency Review Escalation Required!**" if STAFF_PING_ID else "🚨 **Emergency Review Escalation Required!**"
+            else:
+                embed_title = "🚨 Ticket Review Needed (STANDARD Priority)"
+                card_color = discord.Color.blue()
+                alert_text = "New standard ticket awaiting review."
+
+
             embed = discord.Embed(
-                title="🚨 Ticket Review Needed (STANDARD Priority)",
-                description=f"**Customer:** {ticket.get('customer_name', 'Unknown')}\n**Sentiment:** {ticket.get('sentiment', 'NEUTRAL').upper()}",
-                color=discord.Color.blue()
+                title=embed_title,
+                description=f"**Customer:** {ticket.get('customer_name', 'Unknown')}\n**Sentiment:** {ticket_sentiment}",
+                color=card_color
             )
-            embed.add_field(name="💬 Original Message", value=ticket['message'], inline=False)
-            embed.add_field(name="🤖 AI Suggested Draft Reply", value=ticket['draft_reply'], inline=False)
+            
+            original_msg = ticket['message']
+            draft_msg = ticket['draft_reply']
+            if len(original_msg) > 1024:
+                original_msg = original_msg[:1020] + "..."
+            if len(draft_msg) > 1024:
+                draft_msg = draft_msg[:1020] + "..."
+            
+            embed.add_field(name="💬 Original Message", value=original_msg, inline=False)
+            embed.add_field(name="🤖 AI Suggested Draft Reply", value=draft_msg, inline=False)
             embed.set_footer(text=f"Ticket ID: {ticket['ticket_id']} | 👍 Approve | 👎 Reject")
 
+
             try:
-                msg = await review_channel.send(embed=embed)
+                msg = await review_channel.send(content=alert_text if ticket_sentiment == "URGENT" else None, embed=embed)
                 await msg.add_reaction("👍")
                 await msg.add_reaction("👎")
 
-                # Replace placeholder with the real Discord Message ID
+
                 ticket['review_msg_id'] = msg.id
                 ticket['status'] = 'waiting_human_click'
             except Exception as send_err:
                 print(f"❌ Failed to post review card: {send_err}")
-                # Reset if it fails so it can retry safely
                 ticket['review_msg_id'] = None
                 ticket['status'] = 'pending_review'
+
 
     if file_updated:
         with open(INBOX_PATH, 'w') as f:
             json.dump(inbox_list, f, indent=4)
 
+
+
+
 # ==========================================
 #      EVENT: RAW EMOJI REACTION LISTENER
 # ==========================================
-
-# Listens for emoji reactions on staff review cards - a thumbs approves and sends the draft reply directly to the customer, while a thumbs down rejects it and updates the embed card color and status accordingly
 @client.event
 async def on_raw_reaction_add(payload):
     if payload.user_id == client.user.id:
         return
 
+
     emoji_str = str(payload.emoji)
     if emoji_str not in ["👍", "👎"]:
         return
 
+
     review_msg_id = payload.message_id
+
 
     try:
         with open(INBOX_PATH, 'r') as f:
@@ -226,12 +294,14 @@ async def on_raw_reaction_add(payload):
     except Exception:
         return
 
+
     try:
         staff_channel = client.get_channel(payload.channel_id) or await client.fetch_channel(payload.channel_id)
         review_msg = await staff_channel.fetch_message(review_msg_id)
     except Exception as fetch_err:
         print(f"❌ Failed to retrieve target message properties: {fetch_err}")
         return
+
 
     target_ticket_id = None
     if review_msg.embeds and review_msg.embeds[0].footer:
@@ -242,18 +312,17 @@ async def on_raw_reaction_add(payload):
             except Exception:
                 pass
 
+
     file_updated = False
-    
+   
     for ticket in inbox_list:
         if ticket.get('ticket_id') == target_ticket_id and ticket.get('status') == 'waiting_human_click':
-            
-            if not ticket.get('review_msg_id'):
-                ticket['review_msg_id'] = review_msg_id
-
+           
             if emoji_str == "👍":
                 customer_channel_id = int(ticket.get('channel_id'))
                 draft_reply = ticket.get('draft_reply', '')
                 customer_id = ticket.get('customer_id')
+
 
                 try:
                     customer_channel = client.get_channel(customer_channel_id) or await client.fetch_channel(customer_channel_id)
@@ -263,41 +332,64 @@ async def on_raw_reaction_add(payload):
                 except Exception as dispatch_err:
                     print(f"❌ Failed sending message out to customer space: {dispatch_err}")
 
+
                 ticket['status'] = 'completed'
                 status_text = "✅ Approved & Sent"
                 embed_color = discord.Color.green()
+               
+                try:
+                    if review_msg.embeds:
+                        updated_embed = review_msg.embeds[0].copy()
+                        updated_embed.color = embed_color
+                        updated_embed.set_footer(text=f"Status: {status_text} | ID: {target_ticket_id}")
+                        await review_msg.edit(embed=updated_embed)
+                    await review_msg.clear_reactions()
+                except Exception:
+                    pass
+
 
             elif emoji_str == "👎":
-                print(f"❌ Ticket {ticket['ticket_id']} was rejected by staff.")
-                ticket['status'] = 'rejected'
-                status_text = "❌ Rejected by Staff"
-                embed_color = discord.Color.red()
+                print(f"🔄 Ticket {ticket['ticket_id']} rejected. Creating revision thread...")
+                ticket['status'] = 'under_revision'
+                status_text = "🔄 Revision In Progress"
+                embed_color = discord.Color.gold()
+               
+                try:
+                    if review_msg.embeds:
+                        updated_embed = review_msg.embeds[0].copy()
+                        updated_embed.color = embed_color
+                        updated_embed.set_footer(text=f"Status: {status_text} | ID: {target_ticket_id}")
+                        await review_msg.edit(updated_embed)
+                    await review_msg.clear_reactions()
+                   
+                    thread = await review_msg.create_thread(
+                        name=f"Fix-Ticket-{ticket['ticket_id']}",
+                        auto_archive_duration=60
+                    )
+                    await thread.send(
+                        f"👋 <@{payload.user_id}>, what should Claude fix in this draft? "
+                        f"Just type your instructions below."
+                    )
+                    ticket['review_msg_id'] = thread.id
+                except Exception as thread_create_err:
+                    print(f"❌ Failed to set up correction thread: {thread_create_err}")
+                    ticket['status'] = 'rejected'
+
 
             file_updated = True
-            
-            try:
-                if review_msg.embeds:
-                    old_embed = review_msg.embeds[0]
-                    updated_embed = old_embed.copy()
-                    updated_embed.color = embed_color
-                    updated_embed.set_footer(text=f"Status: {status_text} | ID: {target_ticket_id}")
-                    
-                    await review_msg.edit(embed=updated_embed)
-                await review_msg.clear_reactions()
-                print(f"🔒 Review panel card {ticket['ticket_id']} successfully preserved and closed.")
-            except Exception as ui_err:
-                print(f"⚠️ Failed updating card visual state configurations: {ui_err}")
             break
+
 
     if file_updated:
         with open(INBOX_PATH, 'w') as f:
             json.dump(inbox_list, f, indent=4)
 
 
+
+
 # ==========================================
 #         BOT LIFE SYSTEM INITIALIZER
 # ==========================================
-# When the bot successfully connects to Discord, it prints a confirmation to the terminal and prints a confirmation to the terminal and starts the background queue loop, but only if it isn't already running
 @client.event
 async def on_ready():
     print(f"🟢 Discord Gateway Active! Connected as: {client.user}")
@@ -305,8 +397,28 @@ async def on_ready():
         process_ticket_pipeline.start()
         print("🔍 Multi-Queue pipeline background worker loop active.")
 
+
+
+
 if __name__ == "__main__":
     print("📡 Starting Multi-Queue Discord Customer Pipeline Bot...")
+    
+    # ⚡ FORCED PRE-FLIGHT TEST: Verify Anthropic credentials BEFORE boot
+    print("⚡ Verifying API connection...")
+    try:
+        test_response = anthropic_client_instance.messages.create(
+            model="claude-haiku-4-5-20251001", # ✅ Production standard string
+            max_tokens=10,
+            messages=[{"role": "user", "content": "Ping"}]
+        )
+        print("✅ Anthropic API Credentials verified successfully!")
+    except Exception as api_err:
+        print("\n🛑 CRITICAL ERROR: Anthropic initialization failed!")
+        print(f"Details: {api_err}")
+        print("Please check your .env file or model string identifiers.\n")
+        os._exit(1)
+        
     client.run(TOKEN)
+
 
 
